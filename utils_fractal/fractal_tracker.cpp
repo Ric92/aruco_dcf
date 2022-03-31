@@ -58,7 +58,7 @@ int main(int argc, char** argv)
             string aux;int n=0;
             sstr>>aux>>n;
             vreader.open(n);
-            if ( vreader.get(CV_CAP_PROP_FRAME_COUNT)>=2) isVideo=true;
+            if ( vreader.get(cv::CAP_PROP_FRAME_COUNT)>=2) isVideo=true;
         }
 
 

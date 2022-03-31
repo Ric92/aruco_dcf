@@ -196,7 +196,7 @@ void impl__aruco_getRTfromMatrix44(const cv::Mat& M, cv::Mat& R, cv::Mat& T)
 //#define _show_prj
 #ifdef _show_prj
         cv::Mat imColor;
-        cv::cvtColor(grey, imColor, CV_GRAY2BGR);
+        cv::cvtColor(grey, imColor, cv::COLOR_GRAY2BGR);
 #endif
 
         for(auto m:_map_mm)
@@ -255,7 +255,7 @@ void impl__aruco_getRTfromMatrix44(const cv::Mat& M, cv::Mat& R, cv::Mat& T)
                 cv::findContours(patch,contours, cv::noArray(), cv::RETR_LIST, cv::CHAIN_APPROX_NONE);
 #ifdef _show_prj
                 cv::Mat patchColor;
-                cv::cvtColor(patch, patchColor, CV_GRAY2BGR);
+                cv::cvtColor(patch, patchColor, cv::COLOR_GRAY2BGR);
 #endif
                 std::vector<cv::Point2f> approxCurve;
                 for(unsigned int i = 0; i < contours.size(); i++)
@@ -360,7 +360,7 @@ void impl__aruco_getRTfromMatrix44(const cv::Mat& M, cv::Mat& R, cv::Mat& T)
         __ARUCO_ADDTIMER__;
 
         if (input.type() == CV_8UC3)
-            cv::cvtColor(input,grey,CV_BGR2GRAY);
+            cv::cvtColor(input,grey,cv::COLOR_BGR2GRAY);
         else grey = input;
 
         __ARUCO_TIMER_EVENT__("ConvertGrey");

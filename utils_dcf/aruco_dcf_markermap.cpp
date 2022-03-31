@@ -129,12 +129,12 @@ int main(int argc, char** argv)
         int frameid =std::stoi(cml("-fstart", "0"));
         int frameStop =std::stoi(cml("-fstop", "-1"));
 
-        TheVideoCapturer.set(CV_CAP_PROP_POS_FRAMES,frameid);
+        TheVideoCapturer.set(cv::CAP_PROP_POS_FRAMES,frameid);
 
-        int maxNFrames=TheVideoCapturer.get(CV_CAP_PROP_FRAME_COUNT)-1;
+        int maxNFrames=TheVideoCapturer.get(cv::CAP_PROP_FRAME_COUNT)-1;
 
 
-        TheVideoCapturer.set(CV_CAP_PROP_POS_FRAMES,frameid);
+        TheVideoCapturer.set(cv::CAP_PROP_POS_FRAMES,frameid);
         do
         {
             if (frameStop == frameid) break;

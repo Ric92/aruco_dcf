@@ -176,7 +176,7 @@ bool getMarkerIds(const cv::Mat& im, int total_bits, std::vector<cv::Point2f>& m
     obj_corners.push_back(cv::Point2f(0, nBitsSquared));
 
     ///Compute homography using marker corners
-    cv::Mat H = cv::findHomography(obj_corners, marker_corners, CV_RANSAC);
+    cv::Mat H = cv::findHomography(obj_corners, marker_corners, cv::RANSAC);
     if(H.empty())
         return false;
 
@@ -304,7 +304,7 @@ int hamm_distance(uint64_t a, uint64_t b)
 cv::Mat rigidBodyTransformation_Horn1987 (const std::vector<cv::Point3d> &org, const std::vector<cv::Point3d> &dst,bool mbFixScale){
     auto ComputeCentroid=[](cv::Mat &P, cv::Mat &Pr, cv::Mat &C)
     {
-        cv::reduce(P,C,1,CV_REDUCE_SUM);
+        cv::reduce(P,C,1,cv::REDUCE_SUM);
         C = C/P.cols;
         for(int i=0; i<P.cols; i++)
             Pr.col(i)=P.col(i)-C;

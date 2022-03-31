@@ -303,12 +303,12 @@ namespace aruco {
             {
                 cv::projectPoints(_id_innerp3d[id_marker.first], _p_rvec, _p_tvec, _cam_params.CameraMatrix, _cam_params.Distorsion, preinnersPrj);
                 for(auto pt:preinnersPrj)
-                    cv::circle(InImageCopy, pt, 5, cv::Scalar(0,0,255),CV_FILLED);
+                    cv::circle(InImageCopy, pt, 5, cv::Scalar(0,0,255),cv::FILLED);
             }
 
             //Show first position with refinement
             for(auto p:_ref_inner2d)
-                cv::circle(InImageCopy, p, 5, cv::Scalar(255,0,0),CV_FILLED);
+                cv::circle(InImageCopy, p, 5, cv::Scalar(255,0,0),cv::FILLED);
 
             _rvec.convertTo(_rvec,CV_32F);
             _tvec.convertTo(_tvec,CV_32F);
@@ -332,7 +332,7 @@ namespace aruco {
 
             //Show new projection using all inner points
             for(auto pt:_inners_prj)
-                cv::circle(InImageCopy, pt, 5, cv::Scalar(0,255,0),CV_FILLED);
+                cv::circle(InImageCopy, pt, 5, cv::Scalar(0,255,0),cv::FILLED);
 
             cv::namedWindow("AA",cv::WINDOW_NORMAL);
             imshow("AA", InImageCopy);
@@ -801,7 +801,7 @@ namespace aruco {
         }
 
         cv::Mat out;
-        cv::cvtColor(image, out, CV_GRAY2BGR);
+        cv::cvtColor(image, out, cv::COLOR_GRAY2BGR);
         //drawKeypoints(image, kpoints, out, cv::Scalar(0,0,255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
 
         cv::Scalar color;
@@ -818,7 +818,7 @@ namespace aruco {
             int nkm=0;
             for(auto kp:kpoints)
             {
-                putText( out, std::to_string(nkm++), kp.pt, CV_FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 255), 2, 8 );
+                putText( out, std::to_string(nkm++), kp.pt, cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 255), 2, 8 );
             }
         }
 

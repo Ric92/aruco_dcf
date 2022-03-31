@@ -50,7 +50,7 @@ namespace aruco {
 
         cv::Mat grey;
         if (input.type() == CV_8UC3)
-            cv::cvtColor(input,grey,CV_BGR2GRAY);
+            cv::cvtColor(input,grey,cv::COLOR_BGR2GRAY);
         else grey = input;
 
         Timer.add("ConvertGrey");

@@ -378,7 +378,7 @@ void impl_assignClass_fast( const cv::Mat &im, std::vector<cv::KeyPoint>& kpoint
 
 
 //    cv::Mat im2;
-//    cv::cvtColor(input,im2,CV_GRAY2BGR);
+//    cv::cvtColor(input,im2,cv::COLOR_GRAY2BGR);
 //     for(int i=0;i< kpts.size();i++){
 //        auto & kp=kpts[i];
 
@@ -447,7 +447,7 @@ vector< MarkerDetector_Impl::MarkerCandidate> MarkerDetector_Impl::thresholdAndD
 //#define _aruco_debug_detectrectangles
 #ifdef _aruco_debug_detectrectangles
      cv::Mat simage;
-     cv::cvtColor(input,simage,CV_GRAY2BGR);
+     cv::cvtColor(input,simage,cv::COLOR_GRAY2BGR);
 #endif
 
     /// for each contour, analyze if it is a paralelepiped likely to be the marker
@@ -722,7 +722,7 @@ void MarkerDetector_Impl::detect(const cv::Mat& input, vector<Marker>& detectedM
 
     // it must be a 3 channel image
     if (input.type() == CV_8UC3)
-        cv::cvtColor(input,grey,CV_BGR2GRAY);
+        cv::cvtColor(input,grey,cv::COLOR_BGR2GRAY);
     //  convertToGray(input, grey);
     else grey = input;
     __ARUCO_TIMER_EVENT__("ConvertGrey");
@@ -792,7 +792,7 @@ void MarkerDetector_Impl::detect(const cv::Mat& input, vector<Marker>& detectedM
 //        _debug_exec(10,//only executes when compiled in DEBUG mode if debug level is at least 10
 //                    //show the thresholded images
 //                    cv::Mat imrect;
-//                cv::cvtColor(imgToBeThresHolded,imrect,CV_GRAY2BGR);
+//                cv::cvtColor(imgToBeThresHolded,imrect,cv::COLOR_GRAY2BGR);
 //        for(auto m: MarkerCanditates )
 //            m.draw(imrect,cv::Scalar(0,245,0));
 //        cv::imshow("rect-nofiltered",imrect);
@@ -805,7 +805,7 @@ void MarkerDetector_Impl::detect(const cv::Mat& input, vector<Marker>& detectedM
 //        _debug_exec(10,//only executes when compiled in DEBUG mode if debug level is at least 10
 //                    //show the thresholded images
 //                    cv::Mat imrect;
-//                cv::cvtColor(imgToBeThresHolded,imrect,CV_GRAY2BGR);
+//                cv::cvtColor(imgToBeThresHolded,imrect,cv::COLOR_GRAY2BGR);
 //        for(auto m: MarkerCanditates)
 //            m.draw(imrect,cv::Scalar(0,245,0));
 //        cv::imshow("rect-filtered",imrect);

@@ -36,10 +36,10 @@ or implied, of Rafael Muñoz Salinas.
 #include <string>
 #include <stdexcept>
 
-#if  CV_MAJOR_VERSION >= 4
-#define CV_CAP_PROP_FRAME_COUNT cv::CAP_PROP_FRAME_COUNT
-#define CV_CAP_PROP_POS_FRAMES cv::CAP_PROP_POS_FRAMES
-#endif
+// #if  CV_MAJOR_VERSION >= 4
+// #define cv::CAP_PROP_FRAME_COUNT cv::CAP_PROP_FRAME_COUNT
+// #define cv::CAP_PROP_POS_FRAMES cv::CAP_PROP_POS_FRAMES
+// #endif
 using namespace std;
 using namespace cv;
 using namespace aruco;
@@ -236,9 +236,9 @@ int main(int argc, char** argv)
         }
         else{
             TheVideoCapturer.open(TheInputVideo);
-            if ( TheVideoCapturer.get(CV_CAP_PROP_FRAME_COUNT)>=2) isVideo=true;
+            if ( TheVideoCapturer.get(cv::CAP_PROP_FRAME_COUNT)>=2) isVideo=true;
             if(cml["-skip"])
-                TheVideoCapturer.set(CV_CAP_PROP_POS_FRAMES,stoi(cml("-skip")));
+                TheVideoCapturer.set(cv::CAP_PROP_POS_FRAMES,stoi(cml("-skip")));
 
         }
         // check video is open
@@ -293,7 +293,7 @@ int main(int argc, char** argv)
         {
 
             TheVideoCapturer.retrieve(TheInputImage);
-             std::cout<<"Frame:"<<TheVideoCapturer.get(CV_CAP_PROP_POS_FRAMES)<<std::endl;
+             std::cout<<"Frame:"<<TheVideoCapturer.get(cv::CAP_PROP_POS_FRAMES)<<std::endl;
             TheInputImage=resizeImage(TheInputImage,resizeFactor);
             // copy image
             Fps.start();

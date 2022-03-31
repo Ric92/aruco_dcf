@@ -63,7 +63,7 @@ namespace aruco
 
             float size=  std::max(1.,float(img.cols)/ 1280.);
             for(auto p:dstPnt)
-                cv::circle(img, p, size, cv::Scalar(0,0,255), CV_FILLED);
+                cv::circle(img, p, size, cv::Scalar(0,0,255), cv::FILLED);
         }
     }
 
@@ -91,7 +91,7 @@ namespace aruco
                 std::vector<cv::Point2f> innerPoints;
                 projectPoints(innerPoints3d, Tracker.getRvec(), Tracker.getTvec(), _cam_params.CameraMatrix, _cam_params.Distorsion, innerPoints);
                 for(auto p:innerPoints)
-                    circle(img, p, 3 ,  cv::Scalar(0,0,255),CV_FILLED);
+                    circle(img, p, 3 ,  cv::Scalar(0,0,255),cv::FILLED);
             }
             //Draw cube
             if(cube)

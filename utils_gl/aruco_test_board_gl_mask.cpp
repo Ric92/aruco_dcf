@@ -151,7 +151,7 @@ cv::Mat createSyntheticMask(const cv::Mat &img) {
   // just create a mask consisting of a rectangle in the middle of the image
   // very simple but enough to show how to employ mask in opengl
   cv::Mat mask(img.size(), CV_8UC1, cv::Scalar::all(255)); // 255 means it is hidden
-  cv::rectangle(mask,cv::Rect(img.cols/4, img.rows/4, img.cols/2, img.rows/2), cv::Scalar(0), CV_FILLED); //create visible (0) rectangle
+  cv::rectangle(mask,cv::Rect(img.cols/4, img.rows/4, img.cols/2, img.rows/2), cv::Scalar(0), cv::FILLED); //create visible (0) rectangle
   return mask;
 }
 
