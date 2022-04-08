@@ -121,7 +121,7 @@ namespace aruco {
         for(auto m:mapMultiTracker)
         {
             Marker marker = m.second->getMarker();
-            int lineSize = img.cols/700;
+            int lineSize = 2;
 
             //Marker info (id, confidence)
             std::ostringstream txt;

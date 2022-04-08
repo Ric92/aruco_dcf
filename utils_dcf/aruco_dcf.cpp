@@ -158,7 +158,32 @@ int main(int argc, char **argv) {
             if(!setTrackers.empty()){
                 cv::Ptr<TrackerImpl> trackedTag = setTrackers.begin()->second; 
                 cv::Rect2d bbox = trackedTag->getBoundingBox();
+                std::vector<cv::Point2f> corners = trackedTag->getCorners();
+
+                cv::Point2f firstCandidate(9999.9f, 9999.9f);
+                cv::Point2f secondCandidate(9999.9f, 9999.9f);
+                std::cout << "Points: " << std::endl;
+                for(auto &p: corners){
+                    if(p.y < firstCandidate.y){
+                        firstCandidate.x = p.x;
+                        firstCandidate.y = p.y;
+                    }
+                    std::cout << p.x << " " << p.y << std::endl;
+                }
+                for(auto &p: corners){
+                    if(p.y < secondCandidate.y && p.x != firstCandidate.x && p.y != firstCandidate.y){
+                        secondCandidate.x = p.x;
+                        secondCandidate.y = p.y;
+                    }
+                }
                 
+                std::cout << "Chosen points: (" << firstCandidate.x << "," << firstCandidate.y << ") and (" << secondCandidate.x << "," << secondCandidate.y << ")" << std::endl;
+                cv::line(image, firstCandidate, secondCandidate, cv::Scalar(255,0,0), 2);
+                float angle = 10;
+                
+                cv::putText(image, std::to_string(angle), cv::Point2i(50,50), cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(0, 0, 255, 255), 2);
+                
+
                 #ifdef USING_ROS
                 std_msgs::Header header;
                 header.stamp = ros::Time::now();
